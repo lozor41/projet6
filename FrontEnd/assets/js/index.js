@@ -28,13 +28,18 @@ fetch('http://localhost:5678/api/categories')
     .then(data => {
         console.log(JSON.stringify(data, null, 2))
         data.forEach(filtre => {
-            const divBut = document.createElement("div")
             const button = document.createElement("button")
             button.textContent = filtre.name
-            
-            divBut.appendChild(button)
-            but.appendChild(divBut)
+
+            but.appendChild(button)
+
+            const buttonResto = document.querySelector(".Hotels & restaurants")
+            const buttonAppart = document.querySelector(".Appartements")
+            const buttonObjets = document.querySelector(".Objets")
+
+            console.log(button)
 
         })
+
     })
-        
+

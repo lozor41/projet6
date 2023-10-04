@@ -98,6 +98,30 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
+.but {
+	display: flex;
+	justify-content: center;
+	height: 37px;
+	margin-bottom: 40px;
+	gap: 15px;
+}
+
+button {
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 16px;
+	color: #1D6154;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 60px;
+	border: 1px solid;
+}
+
+button:hover {
+	color: white;
+	background-color: #1D6154;
+}
 #introduction {
 	display: flex;
 	align-items: center;
