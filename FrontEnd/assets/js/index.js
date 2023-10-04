@@ -1,6 +1,7 @@
 //TODO récupérer les datas de l'api pour afficher les travaux
 
 const gallery = document.querySelector('.gallery')
+const but = document.querySelector('.but')
 
 fetch('http://localhost:5678/api/works')
     .then(res => res.json())
@@ -23,13 +24,17 @@ fetch('http://localhost:5678/api/works')
     })
 
 fetch('http://localhost:5678/api/categories')
-    .then(res => res/json())
+    .then(res => res.json())
     .then(data => {
+        console.log(JSON.stringify(data, null, 2))
         data.forEach(filtre => {
-            const button = document.createElement('button')
-            button.innerHTML = filtre.name
+            const divBut = document.createElement("div")
+            const button = document.createElement("button")
+            button.textContent = filtre.name
+            
+            divBut.appendChild(button)
+            but.appendChild(divBut)
 
-            button.appendChild(button)
         })
     })
         
