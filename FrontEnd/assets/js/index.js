@@ -20,26 +20,35 @@ fetch('http://localhost:5678/api/works')
             figure.appendChild(image)
             figure.appendChild(figCaption)
             gallery.appendChild(figure)
+
         })
     })
 
+    function filtreButton(categoryId) {
+    }
+
+// création des filtres de manière dynamique
 fetch('http://localhost:5678/api/categories')
     .then(res => res.json())
     .then(data => {
         console.log(JSON.stringify(data, null, 2))
+        const buttonTout = document.createElement("button")
+
+        buttonTout.textContent = "tout"
+        but.appendChild(buttonTout)
         data.forEach(filtre => {
+
             const button = document.createElement("button")
+
             button.textContent = filtre.name
 
             but.appendChild(button)
-
-            const buttonResto = document.querySelector(".Hotels & restaurants")
-            const buttonAppart = document.querySelector(".Appartements")
-            const buttonObjets = document.querySelector(".Objets")
 
             console.log(button)
 
         })
 
     })
+
+
 
