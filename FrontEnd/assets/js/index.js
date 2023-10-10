@@ -21,6 +21,11 @@ fetch('http://localhost:5678/api/works')
             figure.appendChild(figCaption)
             gallery.appendChild(figure)
 
+            // data.filter(obj => obj.categoryId = 1) = Objets
+            // data.filter(obj => obj.categoryId = 2) = Appartements
+            // data.filter(obj => obj.categoryId = 3) = Hotels & restaurants
+            // console.log(categoryId)
+
         })
     })
 
