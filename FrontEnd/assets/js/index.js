@@ -24,7 +24,7 @@ fetch('http://localhost:5678/api/works')
             // data.filter(obj => obj.categoryId = 1) = Objets
             // data.filter(obj => obj.categoryId = 2) = Appartements
             // data.filter(obj => obj.categoryId = 3) = Hotels & restaurants
-            // console.log(categoryId)
+            // console.log(categoryId);
 
         })
     })
