@@ -60,4 +60,20 @@ const init = async () => {
     await getCategories().then(data => createCategories(data))
 }
 
+
+(async function (){
+    const {login} = await import("../../Backend/controllers/users.controller")
+    console.log(login)
+})()
+
+function Login(){
+    const email=document.login.email.value;
+    const password=document.login.password.value;
+    
+    if (email=="sophie@bluel.com" && password=="test") {
+    window.location="./index.html";
+    then ("user not found")
+    }
+    }
+
 init()
