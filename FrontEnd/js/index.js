@@ -61,19 +61,40 @@ const init = async () => {
 }
 
 
-(async function (){
-    const {login} = await import("../../Backend/controllers/users.controller")
-    console.log(login)
-})()
+// (async function (){
+//     const {login} = await import("../../Backend/controllers/users.controller")
+//     login()
+// })()
 
-function Login(){
-    const email=document.login.email.value;
-    const password=document.login.password.value;
-    
-    if (email=="sophie@bluel.com" && password=="test") {
-    window.location="./index.html";
-    then ("user not found")
+
+
+window.addEventListener("log", () => {
+    function sendData() {
+        const loger = new XMLHttpRequest()
+
+        const formdata = new FormData(form)
+
+        loger.addEventListener("log", (event) => {
+            alert(event.target.responseText)
+        })
+
+        loger.addEventListener("error", (event) => {
+            alert("erreur survenue.")
+        })
+
+        loger.open("POST", "../index.html")
+
+        loger.send(formdata)
+
     }
-    }
+
+    const form = document.getElementById("login")
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault()
+
+        sendData()
+    })
+})
 
 init()
