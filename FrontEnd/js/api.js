@@ -12,7 +12,11 @@ const getWorks = async categoryId => await get(WORKS_URL).then(data => {
 
 const getCategories = async () => await get(CATEGORIES_URL) 
 
-const postLog = async connect => await get(LOGIN_URL).then(data => {
+// Login
+
+const post = async url => fetch(url).then(res => res.json()).then(data => data).catch(error => error)
+
+const postLog = async connect => await post(LOGIN_URL).then(data => {
     console.log(data)
     const logData = connect ? data.loger(email === password) : data
     return logData
