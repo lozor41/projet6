@@ -61,40 +61,5 @@ const init = async () => {
 }
 
 
-// (async function (){
-//     const {login} = await import("../../Backend/controllers/users.controller")
-//     login()
-// })()
-
-
-
-window.addEventListener("log", () => {
-    function sendData() {
-        const loger = new XMLHttpRequest()
-
-        const formdata = new FormData(form)
-
-        loger.addEventListener("log", (event) => {
-            alert(event.target.responseText)
-        })
-
-        loger.addEventListener("error", (event) => {
-            alert("erreur survenue.")
-        })
-
-        loger.open("POST", "../index.html")
-
-        loger.send(formdata)
-
-    }
-
-    const form = document.getElementById("login")
-
-    form.addEventListener("submit", (event) => {
-        event.preventDefault()
-
-        sendData()
-    })
-})
 
 init()
