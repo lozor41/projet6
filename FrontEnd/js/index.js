@@ -2,6 +2,7 @@
 
 const gallery = document.querySelector('.gallery')
 const categories = document.querySelector('.categories')
+const loginA = document.querySelector('#loginA li')
 
 const createGallery = data => {
     // on nettoie tout le container gallery
@@ -18,7 +19,7 @@ const createGallery = data => {
         figCaption.innerHTML = project.title
 
         figure.appendChild(image)
-        figure.appendChild(figCaption) 
+        figure.appendChild(figCaption)
         gallery.appendChild(figure)
     })
 }
@@ -52,14 +53,18 @@ const createCategories = data => {
 }
 
 
-
-
 const init = async () => {
     await getWorks().then(data => createGallery(data))
     // création des filtres de manière dynamique
     await getCategories().then(data => createCategories(data))
 }
 
-
-
 init()
+
+if (localStorage.token) {
+    loginA.innerHTML = 'logout'
+    categories.style.display = 'none'
+}
+
+loginA.addEventListener('click', () => localStorage.clear())
+
