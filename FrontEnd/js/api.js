@@ -10,15 +10,18 @@ const getWorks = async categoryId => await get(WORKS_URL).then(data => {
     return dataFiltered
 })
 
-const getCategories = async () => await get(CATEGORIES_URL) 
+const getCategories = async () => await get(CATEGORIES_URL)
 
 // Login
 
-const post = async url => fetch(url).then(res => res.json()).then(data => data).catch(error => error)
+const post = async (url, data) => fetch(url, {
+    method: 'post',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+}).then(res => res.json()).then(data => data).catch(error => error)
 
-const postLog = async connect => await post(LOGIN_URL).then(data => {
-    console.log(data)
-    const logData = connect ? data.loger(email === password) : data
-    return logData
-})
+const postLogin = async data => await post(LOGIN_URL, data).then(data => data)
+
+
+
 
