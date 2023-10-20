@@ -3,6 +3,8 @@
 const gallery = document.querySelector('.gallery')
 const categories = document.querySelector('.categories')
 const loginA = document.querySelector('#loginA li')
+const modif = document.querySelector('.modif')
+const headLog = document.querySelector('.headLog')
 
 const createGallery = data => {
     // on nettoie tout le container gallery
@@ -62,8 +64,18 @@ const init = async () => {
 init()
 
 if (localStorage.token) {
+    const head = document.createElement("p")
+    head.textContent = "Mode édition"
+    const txtEdit = document.createElement("button")
+    txtEdit.textContent = "Modifier"
+
+    modif.appendChild(txtEdit)
+    headLog.appendChild(head)
+
+    
     loginA.innerHTML = 'logout'
     categories.style.display = 'none'
+  
 }
 
 loginA.addEventListener('click', () => localStorage.clear())

@@ -375,3 +375,21 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+
+
+
+.headLog {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	background-color: black;
+	width: 100%;
+	height: 60px;
+}
+.headLog nav {
+	cursor: pointer;
+}
+.modif {
+	display: flex;
+}
