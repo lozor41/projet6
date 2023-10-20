@@ -423,3 +423,16 @@ footer nav ul {
 	width: 600px;
 	padding: 20px;
 }
+.jsClose {
+	display: flex;
+	justify-content: flex-end;
+	font-size: 20px;
+	font-weight: 600;
+	cursor: pointer;
+}
+h3 {
+	display: flex;
+	justify-content: center;
+	font-size: 28px;
+	font-weight: 400;
+}
