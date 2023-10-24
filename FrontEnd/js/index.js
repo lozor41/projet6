@@ -1,10 +1,13 @@
-//TODO récupérer les datas de l'api pour afficher les travaux
+// récupérer les datas de l'api pour afficher les travaux
 
 const gallery = document.querySelector('.gallery')
 const categories = document.querySelector('.categories')
 const loginA = document.querySelector('#loginA li')
 const modif = document.querySelector('.modif')
 const headLog = document.querySelector('.headLog')
+const jsModal = document.querySelector('.jsModal')
+const buttonModal = document.querySelector('.buttonModal')
+const galleryModal = document.querySelector('.galleryModal')
 
 const createGallery = data => {
     // on nettoie tout le container gallery
@@ -14,6 +17,8 @@ const createGallery = data => {
     data.forEach(project => {
         const figure = document.createElement('figure')
         const image = document.createElement('img')
+        const imgMod = document.createElement('img')
+        imgMod.src = project.imageUrl
         image.src = project.imageUrl
         image.alt = project.title
 
@@ -23,6 +28,7 @@ const createGallery = data => {
         figure.appendChild(image)
         figure.appendChild(figCaption)
         gallery.appendChild(figure)
+        galleryModal.appendChild(imgMod)
     })
 }
 
@@ -65,15 +71,21 @@ init()
 
 if (localStorage.token) {
     const head = document.createElement("nav")
+    const butModal = document.createElement("button")
     head.textContent = "Mode édition"
+    butModal.textContent = "Ajouter une photo"
+    headLog.style.display = null
+    jsModal.style.display = null
 
     headLog.appendChild(head)
+    buttonModal.appendChild(butModal)
 
     
     loginA.innerHTML = 'logout'
     categories.style.display = 'none'
   
 }
+
 
 loginA.addEventListener('click', () => localStorage.clear())
 

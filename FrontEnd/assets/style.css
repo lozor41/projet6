@@ -417,11 +417,44 @@ footer nav ul {
 	background: rgba(0, 0, 0, 0.8);
 }
 .contentModal {
+	display: flex;
+	flex-direction: column;
 	background-color: white;
 	max-width: calc(100vw - 20px);
 	max-height: calc(100vh - 20px);
 	width: 600px;
+	height: 680px;
 	padding: 20px;
+}
+.buttonModal {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+.buttonModal button {
+	width: 240px;
+	height: 40px;
+}
+.galleryModal {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-items: center;
+	margin: 20px;
+	padding-left: 40px;
+	column-gap: 20px;
+	row-gap: 30px;
+	
+}
+.galleryModal img {
+	width: 78px;
+	height: 104px;
+}
+.lineModal {
+	width: 480px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border: 1px solid #B3B3B3;
 }
 .jsClose {
 	display: flex;
@@ -435,4 +468,8 @@ h3 {
 	justify-content: center;
 	font-size: 28px;
 	font-weight: 400;
+	margin-bottom: 50px;
+}
+.pen {
+	color: white;
 }
