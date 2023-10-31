@@ -457,6 +457,11 @@ footer nav ul {
 	right: 25px;
 	top: 8px;
 	cursor: pointer;
+	width: 17px;
+	height: 17px;
+	background-color: black;
+	color: white;
+
 }
 .lineModal {
 	width: 480px;

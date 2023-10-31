@@ -8,6 +8,7 @@ const headLog = document.querySelector('.headLog')
 const jsModal = document.querySelector('.jsModal')
 const buttonModal = document.querySelector('.buttonModal')
 const galleryModal = document.querySelector('.galleryModal')
+const lineModal = document.querySelector('.lineModal')
 
 const createGallery = data => {
     // on nettoie tout le container gallery
@@ -87,7 +88,10 @@ if (localStorage.token) {
     
     loginA.innerHTML = 'logout'
     categories.style.display = 'none'
-  
+
+    buttonModal.addEventListener('click', async () => {
+        console.log('click')
+    })
 }
 
 
