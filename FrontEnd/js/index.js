@@ -85,47 +85,16 @@ if (localStorage.token) {
     headLog.appendChild(head)
     buttonModal.appendChild(butModal)
 
-    
+
     loginA.innerHTML = 'logout'
     categories.style.display = 'none'
-
-    buttonModal.addEventListener('click', async () => {
-        console.log('click')
-    })
 }
 
+buttonModal.addEventListener('click', async () => {
+    console.log('click')
+    displayModal2()
+})
 
 loginA.addEventListener('click', () => localStorage.clear())
 
-let modal = null
-const openModal = function (e) {
-    e.preventDefault()
-    const target = document.querySelector(e.target.getAttribute('href'))
-    target.style.display = null
-    target.removeAttribute('aria-hidden')
-    target.setAttribute('aria-modal', 'true')
-    modal = target
-    modal.addEventListener('click', closeModal)
-    modal.querySelector('.jsClose').addEventListener('click', closeModal)
-    modal.querySelector('.modalStop').addEventListener('click', stopPropagation)
-}
 
-const closeModal = function (e) {
-    if (modal === null) return
-    e.preventDefault()
-    modal.style.display = "none"
-    modal.setAttribute('aria-hidden', 'true')
-    modal.removeAttribute('aria-modal')
-    modal.removeEventListener('click', closeModal)
-    modal.querySelector('.jsClose').removeEventListener('click', closeModal)
-    modal.querySelector('.modalStop').removeEventListener('click', stopPropagation)
-    modal = null
-}
-
-const stopPropagation = function (e) {
-    e.stopPropagation()
-}
-
-document.querySelectorAll('.modif').forEach(a => {
-    a.addEventListener('click', openModal)
-})

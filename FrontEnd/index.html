@@ -15,7 +15,7 @@
 </head>
 
 <body>
-	<div class="headLog"  style="display: none"><i class="fa-regular fa-pen-to-square pen"></i></div>
+	<div class="headLog" style="display: none"><i class="fa-regular fa-pen-to-square pen"></i></div>
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 		<nav>
@@ -46,30 +46,8 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<h2 class="modif">Mes Projets<a href="#modal1" class="jsModal" style="display: none"><i class="fa-regular fa-pen-to-square"></i>Modifier</a></h2>
-			<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="false" style="display: none;">
-				<div class="contentModal modalStop">
-					<a class="jsClose"><i class="fa-solid fa-xmark"></i>
-					</a>
-				<h3>Galerie photo</h3>
-				<div class="galleryModal"></div>
-				<hr class="lineModal"/>
-				<div class="buttonModal"></div>
-				</div>
-				<!-- <div class="contentModal2 modalStop" style="display: none;">
-					<h3>Ajout photo</h3>
-					<label for="Titre">Titre</label>
-					<input type="text" name="Titre" id="Titre">
-					<label for="categorie">Catégories</label>
-					<select name="categorie" id="categorie">
-						<option value="">----</option>
-						<option value="hotel&restaurants">Hotel & restaurants</option>
-						<option value="appartements">Appartements</option>
-						<option value="objets">Objets</option>
-						<hr class="lineModal"/>
-						<div class="buttonModal2"></div>
-				</div> -->
-			</aside>
+			<h2 class="modif">Mes Projets<a href="#modal1" class="jsModal" style="display: none"><i
+						class="fa-regular fa-pen-to-square"></i>Modifier</a></h2>
 			<div class="categories"></div>
 			<div class="gallery">
 			</div>
@@ -87,6 +65,58 @@
 				<input type="submit" value="Envoyer">
 			</form>
 		</section>
+
+		<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="false" style="display: none;">
+			<div class="contentModal modal1 modalStop">
+				<a class="jsClose"><i class="fa-solid fa-xmark"></i>
+				</a>
+				<h3>Galerie photo</h3>
+				<div class="galleryModal"></div>
+				<hr class="lineModal" />
+				<div class="buttonModal"></div>
+			</div>
+			<div class="contentModal modal2 modalStop">
+				<a class="jsClose"><i class="fa-solid fa-xmark"></i>
+				</a>
+				<btn id="modal-btn-back"><i class="fa-solid fa-arrow-left"></i></btn>
+				<h3>Ajout photo</h3>
+				<div id="addElements">
+					<form enctype="multipart/form-data" id="form">
+						<div id="searchPicture">
+							<img id="preview" src="./assets/images/Malt-Juniper-New-York.png" alt="picture">
+							<div id="inputPhoto" class="flex">
+								<i class="fa-sharp fa-regular fa-5x fa-image"></i>
+								<label for="photo" id="labelPhoto">
+									<p>+ Ajouter photo</p>
+									<input type="file" id="photo" accept="image/jpg, image/png" size="4000000">
+								</label>
+								<p>jpg, png : 4mo max</p>
+							</div>
+							<div id="file-error" class="input-error">Veuillez charger une image au format jpg, jpeg ou
+								png
+								inférieure à 4 Mo</div>
+						</div>
+						<label for="input-title" id="titleLabel">Titre</label>
+						<input type="text" id="input-title" name="input-title" class="borderInput">
+						<div id="title-error" class="input-error">Veuillez renseigner un titre valide avec au moins 2
+							caractères</div>
+						<label for="category" id="categoryLabel">Catégorie</label>
+						<div id="select-container">
+							<select name="category" id="category" class="borderInput">
+								<option value="0"></option>
+								<option value="1">Objets</option>
+								<option value="2">Appartements</option>
+								<option value="3">Hotels &amp; restaurants</option>
+							</select>
+							<img id="dropdown" src="./assets/icons/dropdown.png" alt="liste deroulant">
+						</div>
+						<div id="select-error" class="input-error">Veuillez sélectionner une catégorie valide</div>
+						<div class="line-2"></div>
+						<button id="validate">Valider</button>
+					</form>
+				</div>
+			</div>
+		</aside>
 	</main>
 
 	<footer>
@@ -97,7 +127,8 @@
 		</nav>
 	</footer>
 	<script src="./js/api.js"></script>
-	<script type="module" src="./js/index.js"></script>
+	<script src="./js/modal.js"></script>
+	<script src="./js/index.js"></script>
 </body>
 
 </html>
