@@ -2,6 +2,9 @@ const modal = document.getElementById('modal1')
 const modal1 = document.querySelector('.modal1')
 const modal2 = document.querySelector('.modal2')
 const modalBtnBack = document.getElementById('modal-btn-back')
+const category = document.querySelector('.category')
+const titleImg = document.querySelector('.input-title')
+const addImg = document.querySelector('.inputPhoto')
 
 // let modal = null
 const openModal = function (e) {
@@ -53,3 +56,26 @@ document.querySelectorAll('.jsClose').forEach(a => {
 })
 
 modalBtnBack.addEventListener('click', () => displayModal1())
+
+// const previewImage = (event) => {
+//     if () {
+//     const imageSrc = URL.createObjectURL()
+//     const imagePreview = document.querySelector('.preview')
+//     imagePreview.src = imageSrc
+//     imagePreview.style.display = "block"
+//     }
+// }
+
+const formData = new FormData()
+    formData.append("image", addImg)
+    formData.append("title", titleImg)
+    formData.append("category", category)
+
+const answer = 
+        await fetch('http://localhost:5678/api/works/', {
+        method: 'POST',
+        headers: {'Authorization': `Bearer ${myToken}`},
+        body: formData
+    });
+
+    
