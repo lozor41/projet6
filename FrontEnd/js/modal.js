@@ -74,7 +74,7 @@ const formData = new FormData()
 const answer = 
         await fetch('http://localhost:5678/api/works/', {
         method: 'POST',
-        headers: {'Authorization': `Bearer ${myToken}`},
+        headers: {'Authorization': `Bearer ${token}`},
         body: formData
     });
 
