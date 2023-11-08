@@ -460,6 +460,7 @@ footer nav ul {
 	width: 78px;
 	height: 104px;
 	position: relative;
+	object-fit: cover;
 }
 
 .galleryModal i {
@@ -588,6 +589,8 @@ h3 {
 #preview {
 	height: 100%;
 	display: none;
+	width: 129px;
+	object-fit: cover;
 }
 
 #validate {

@@ -22,6 +22,15 @@ const post = async (url, data) => fetch(url, {
 
 const postLogin = async data => await post(LOGIN_URL, data).then(data => data)
 
+const deleteWork = id => fetch(`${WORKS_URL}/${id}`, {
+    method: 'delete',
+    headers: { 'Authorization': `Bearer ${localStorage.token}` }
+});
 
+const postWork = data => fetch(WORKS_URL, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${localStorage.token}` },
+    body: data
+}).then(res => res.json())
 
 

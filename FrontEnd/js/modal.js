@@ -2,41 +2,30 @@ const modal = document.getElementById('modal1')
 const modal1 = document.querySelector('.modal1')
 const modal2 = document.querySelector('.modal2')
 const modalBtnBack = document.getElementById('modal-btn-back')
-const category = document.querySelector('.category')
-const titleImg = document.querySelector('.input-title')
-const addImg = document.querySelector('.inputPhoto')
+const category = document.getElementById('category')
+const title = document.getElementById('input-title')
+const addImg = document.getElementById('inputPhoto')
+const fileUpload = document.getElementById('photo')
+const preview = document.getElementById('preview')
+const formAddWork = document.getElementById('form')
+const fileError = document.getElementById('file-error')
 
-// let modal = null
+
 const openModal = function (e) {
     modal.style.display = 'flex'
-    // e.preventDefault()
-    // const target = document.querySelector(e.target.getAttribute('href'))
-    // target.style.display = null
-    // target.removeAttribute('aria-hidden')
-    // target.setAttribute('aria-modal', 'true')
-    // modal = target
-    // modal.addEventListener('click', closeModal)
-    // modal.querySelector('.jsClose').addEventListener('click', closeModal)
-    // modal.querySelector('.modalStop').addEventListener('click', stopPropagation)
     displayModal1()
 }
 
 const closeModal = function (e) {
-    // if (modal === null) return
-    // e.preventDefault()
-    // modal.style.display = "none"
-    // modal.setAttribute('aria-hidden', 'true')
-    // modal.removeAttribute('aria-modal')
-    // modal.removeEventListener('click', closeModal)
-    // modal.querySelector('.jsClose').removeEventListener('click', closeModal)
-    // modal.querySelector('.modalStop').removeEventListener('click', stopPropagation)
-    // modal = null
     modal.style.display = 'none'
 }
 
 const displayModal2 = () => {
     modal1.style.display = 'none'
     modal2.style.display = 'block'
+    addImg.style.display = 'flex'
+    preview.style.display = 'none'
+    fileError.style.display = 'none'
 }
 
 const displayModal1 = () => {
@@ -57,25 +46,41 @@ document.querySelectorAll('.jsClose').forEach(a => {
 
 modalBtnBack.addEventListener('click', () => displayModal1())
 
-// const previewImage = (event) => {
-//     if () {
-//     const imageSrc = URL.createObjectURL()
-//     const imagePreview = document.querySelector('.preview')
-//     imagePreview.src = imageSrc
-//     imagePreview.style.display = "block"
-//     }
-// }
 
-const formData = new FormData()
-    formData.append("image", addImg)
-    formData.append("title", titleImg)
-    formData.append("category", category)
+fileUpload.addEventListener('change', () => {
+    const file = fileUpload.files[0]
 
-const answer = 
-        await fetch('http://localhost:5678/api/works/', {
-        method: 'POST',
-        headers: {'Authorization': `Bearer ${token}`},
-        body: formData
-    });
+    if (file) {
+        console.log(file)
+        preview.src = URL.createObjectURL(file)
+        addImg.style.display = 'none'
+        preview.style.display = 'flex'
 
-    
+        if (file.size > 4000000) {
+            fileError.style.display = 'flex'
+        }
+    }
+})
+
+formAddWork.addEventListener('submit', e => {
+    // avoit to reload the page
+    e.preventDefault()
+
+    const formData = new FormData()
+    formData.append("image", fileUpload.files[0])
+    formData.append("title", title.value)
+    formData.append("category", parseInt(category.value))
+
+    console.log('formData:', formData)
+
+    postWork(formData)
+        .then(() => getWorks())
+        .then(data => {
+            createGallery(data)
+            closeModal()
+        })
+})
+
+
+
+

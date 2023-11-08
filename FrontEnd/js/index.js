@@ -13,6 +13,7 @@ const lineModal = document.querySelector('.lineModal')
 const createGallery = data => {
     // on nettoie tout le container gallery
     gallery.innerHTML = ''
+    galleryModal.innerHTML = ''
 
     // parcourir le tableau des data pour afficher le contenu dans le dom
     data.forEach(project => {
@@ -33,7 +34,14 @@ const createGallery = data => {
 
         const trash = document.createElement('i')
         trash.classList.add('fa-solid', 'fa-trash-can')
+        trash.addEventListener('click', () => {
+            deleteWork(project.id)
+                .then(() => getWorks())
+                .then(data => createGallery(data))
+        })
         galleryModal.appendChild(trash)
+
+
     })
 }
 
