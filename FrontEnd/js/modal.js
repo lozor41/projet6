@@ -59,6 +59,8 @@ fileUpload.addEventListener('change', () => {
         if (file.size > 4000000) {
             fileError.style.display = 'flex'
         }
+        if ( ext !='jpg' && ext != 'png' )    
+        return fileError.style.display = 'flex';
     }
 })
 
