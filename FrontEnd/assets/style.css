@@ -400,7 +400,7 @@ footer nav ul {
 
 .jsModal {
 	display: flex;
-	align-items: center;
+	align-items: baseline;
 	margin-left: 30px;
 	color: black;
 	font-size: 14px;
@@ -436,7 +436,7 @@ footer nav ul {
 .buttonModal {
 	display: flex;
 	justify-content: center;
-	margin-top: 20px;
+	margin-top: 40px;
 }
 
 .buttonModal button {
@@ -471,6 +471,7 @@ footer nav ul {
 	width: 17px;
 	height: 17px;
 	background-color: black;
+	border-radius: 3px;
 	color: white;
 	display: flex;
 	justify-content: center;
@@ -504,6 +505,11 @@ h3 {
 
 .pen {
 	color: white;
+	margin: 10px;
+}
+
+.fa-regular {
+	margin: 10px;
 }
 
 .modal2 {
