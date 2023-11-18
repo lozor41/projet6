@@ -9,7 +9,10 @@ const fileUpload = document.getElementById('photo')
 const preview = document.getElementById('preview')
 const formAddWork = document.getElementById('form')
 const fileError = document.getElementById('file-error')
-
+const titleError = document.getElementById('title-error')
+const selectError = document.getElementById('select-error')
+const selectCategory = document.getElementById('category')
+const btnValidate = document.getElementById('validate')
 
 const openModal = function (e) {
     modal.style.display = 'flex'
@@ -26,6 +29,7 @@ const displayModal2 = () => {
     addImg.style.display = 'flex'
     preview.style.display = 'none'
     fileError.style.display = 'none'
+    disableButton()
 }
 
 const displayModal1 = () => {
@@ -46,42 +50,89 @@ document.querySelectorAll('.jsClose').forEach(a => {
 
 modalBtnBack.addEventListener('click', () => displayModal1())
 
+const disableButton = () => {
+    btnValidate.style.backgroundColor = "#A7A7A7"
+    btnValidate.setAttribute('disabled', 'disabled')
+    btnValidate.style.cursor = 'not-allowed'
+}
 
-fileUpload.addEventListener('change', () => {
+const enableButton = () => {
+    btnValidate.style.backgroundColor = '#1D6154'
+    btnValidate.removeAttribute('disabled')
+    btnValidate.style.cursor = 'pointer'
+}
+
+const fileIsValid = () => {
     const file = fileUpload.files[0]
-
-    if (file) {
+    const fileTypeAccepted = ['image/jpeg', 'image/png']
+    if (file && file.size < 4000000 && fileTypeAccepted.includes(file.type)) {
         console.log(file)
         preview.src = URL.createObjectURL(file)
         addImg.style.display = 'none'
         preview.style.display = 'flex'
-
-        if (file.size > 4000000) {
-            fileError.style.display = 'flex'
-        }
-        if ( ext !='jpg' && ext != 'png' ) {   
-            fileError.style.display = 'flex'
-        }
+        fileError.style.display = 'none'
+        return true
     }
-})
+    fileError.style.display = 'flex'
+    disableButton()
+    return false
+}
+
+const titleIsValid = () => {
+    if (title.value.length < 2) {
+        titleError.style.display = 'flex'
+        disableButton()
+        return false
+    }
+    titleError.style.display = 'none'
+    return true
+}
+
+const selectIsValid = () => {
+    if (parseInt(selectCategory.value) <= 0) {
+        selectError.style.display = 'flex'
+        disableButton()
+        return false
+    }
+    selectError.style.display = 'none'
+    return true
+}
+
+const checkInputsFormAddWork = () => {
+    const result = fileIsValid() && titleIsValid() && selectIsValid()
+    if (result) {
+        enableButton()
+    }
+
+    return result
+}
+
+
+fileUpload.addEventListener('change', () => checkInputsFormAddWork())
+
+title.addEventListener('input', () => checkInputsFormAddWork())
+
+selectCategory.addEventListener('change', () => checkInputsFormAddWork())
 
 formAddWork.addEventListener('submit', e => {
     // avoit to reload the page
     e.preventDefault()
 
-    const formData = new FormData()
-    formData.append("image", fileUpload.files[0])
-    formData.append("title", title.value)
-    formData.append("category", parseInt(category.value))
+    if (checkInputsFormAddWork()) {
+        const formData = new FormData()
+        formData.append("image", fileUpload.files[0])
+        formData.append("title", title.value)
+        formData.append("category", parseInt(category.value))
 
-    console.log('formData:', formData)
+        console.log('formData:', formData)
 
-    postWork(formData)
-        .then(() => getWorks())
-        .then(data => {
-            createGallery(data)
-            closeModal()
-        })
+        postWork(formData)
+            .then(() => getWorks())
+            .then(data => {
+                createGallery(data)
+                closeModal()
+            })
+    }
 })
 
 

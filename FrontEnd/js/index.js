@@ -73,11 +73,31 @@ const createCategories = data => {
     })
 }
 
+const createSelectCategories = data => {
+    selectCategory.innerHTML = ''
+
+    const option = document.createElement('option')
+    option.value = 0
+    option.innerHTML = ''
+    selectCategory.appendChild(option)
+
+    data.forEach(item => {
+        const option = document.createElement('option')
+        option.value = item.id
+        option.innerHTML = item.name
+        selectCategory.appendChild(option)
+    })
+
+}
+
 
 const init = async () => {
     await getWorks().then(data => createGallery(data))
     // création des filtres de manière dynamique
-    await getCategories().then(data => createCategories(data))
+    await getCategories().then(data => {
+        createCategories(data)
+        createSelectCategories(data)
+    })
 }
 
 init()
